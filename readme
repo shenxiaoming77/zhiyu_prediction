@@ -1,0 +1,104 @@
+赛事疑问
+Q：商品促销价格表时间如何理解？
+
+A：促销价格表没有覆盖全部时间，之前没有做数据积累。当商品没有进行促销活动时，促销价格=0时促销活动区间无效，促销价格>0时促销活动时间区间有效。提交结果为样例里面的sku集合。
+
+Q：只提交样例中的sku还是goodsale表中所有的sku呢？
+
+A：提交结果为样例里面的sku集合。
+
+Q：“将测试数据分割为A/B两份”中的测试数据是指提交的结果吗？
+
+A：AB榜是指平台在评分是会用数据中的一部分给出分数。A阶段用一部分，B阶段用一部分。
+
+Q：商品季节属性字段的取值(0,1,2,3,4,5,6,10)代表哪些季节意义？
+
+A：产品季节: 1.春 2.夏 3.秋 4.冬 5.春夏 6.春秋 7.春冬 8.夏秋 9.夏冬 10.秋冬
+
+Q：sku数量，是否可以理解为某种商品的单日销售量？
+
+A：sku_id 是商品最细粒度，一个goods_id会有1个或者多个sku_id
+
+Q：请问商品季节属性为0的代表没有特别的季节属性吗？
+
+A：是的
+
+Q： 只提交样例中的sku还是goodsale表中所有的sku呢？提交结果行数是多少？
+
+A：提交结果按赛道分的，只用提交该赛道下样例里面的sku
+
+Q： 请问market表里活动节奏plan字段是什么？
+
+A：活动类型伪码
+
+Q： 只提交样例中的104511个sku么？
+
+A：是的
+
+Q： 在goodsale表中出现了销售价格为0的数据，这是什么原因呢？算销量吗？
+
+A：销售数据中有商品价格为0的情况，这些商品非正常商品，可能是活动赠品，或活动游戏的礼品，奖品等，算销量
+
+Q： 测试集预测全部sku还是样例里的部分sku？
+
+A：需要做预测的sku集合为提交案例中的sku
+
+Q：只提交样例中的104511个sku么？
+
+A：是的，只需要提交样例的中的skuID的结果
+
+Q：请问本赛题提交结果行数是多少/ 只提交样例中的sku还是goodsale表中所有的sku呢？
+
+A：只需要按照submit_sample.csv中的sku进行提交即可， 多提交的数据会被忽略掉。
+
+Q：请问B榜的数据是submit_sample之外的那些sku_id吗？
+
+A：AB榜均是对submit_sample.csv中的sku进行评测。
+
+
+原始数据表信息：
+1. ccf_jolly_goodsdaily.csv:商品在用户的表现数据，包含点击，加购，收藏等数据
+data_date	时间yyyyMMdd
+goods_id	商品id
+goods_click	商品点击次数
+cart_click	商品加购次数
+favorites_click	商品收藏次数
+sales_uv	商品购买人数
+onsale_days	在售天数
+
+2.ccf_jolly_goodsinfo.csv: 商品信息，包含类目层级，季节属性，品牌id
+goods_id	商品id
+cat_level1_id	一级类目id
+cat_level2_id	二级类目id
+cat_level3_id	三级类目id
+cat_level4_id	四级类目id
+cat_level5_id	五级类目id
+cat_level6_id	六级类目id
+cat_level7_id	七级类目id
+goods_season	商品季节属性
+brand_id	品牌id
+
+3.ccf_jolly_goodsale.csv: 商品销售数据，包含每日商品销量，平均价格，吊牌价格
+data_date	日期yyyyMMdd
+goods_id	商品id
+sku_id	skuid
+goods_num	sku销售量
+goods_price	商品平均价格
+orginal_shop_price	商品吊牌价格
+
+4.ccf_jolly_goods_sku_relation.csv: 商品sku映射表，goods_id对应sku_id映射关系
+goods_id	商品id
+sku_id	skuid
+
+5.ccf_jolly_goods_promote_price.csv: 商品促销价格表，包含商品标价，促销价，促销日期
+data_date	日期yyyyMMdd
+goods_id	商品id
+shop_price	商品标价
+promote_price	商品促销价
+promote_start_time	促销开始时间
+promote_end_time	促销结束时间
+
+6. ccf_jolly_marketing.csv: 平台活动时间表，包含活动类型，节奏类型
+data_date	日期yyyyMMdd
+marketing	活动类型id
+plan	活动节奏id

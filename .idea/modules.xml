@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../RNN-Active-User-Forecast-master/.idea/RNN-Active-User-Forecast-master.iml" filepath="$PROJECT_DIR$/../RNN-Active-User-Forecast-master/.idea/RNN-Active-User-Forecast-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/zhiyu_prediction_competition.iml" filepath="$PROJECT_DIR$/.idea/zhiyu_prediction_competition.iml" />
     </modules>
   </component>
 </project>
-
